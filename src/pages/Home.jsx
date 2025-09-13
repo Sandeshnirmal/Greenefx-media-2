@@ -29,6 +29,8 @@ import {
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
+
 
 // Helper Components
 const CheckmarkListItem = ({ children }) => (
@@ -50,7 +52,7 @@ const CheckmarkListItem = ({ children }) => (
 
 const SectionTitle = ({ children }) => (
   <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#4CAF4F] font-poppins tracking-tight">
+    <h2 className="text-[5vh] font-bold text-[#4CAF4F] font-poppins tracking-tight">
       {children}
     </h2>
   </div>
@@ -77,7 +79,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navClasses = `fixed top-0 left-0 right-0 z-50 duration-300 ${navState.visible ? "translate-y-0" : "-translate-y-full"} ${navState.top ? "bg-transparent text-white" : "bg-white text-black shadow-md"}`;
+  const navClasses = `fixed top-0 left-0 right-0 z-50 duration-300 ${
+    navState.visible ? "translate-y-0" : "-translate-y-full"
+  } ${
+    navState.top ? "bg-transparent text-white" : "bg-white text-black shadow-md"
+  }`;
   const textClasses = navState.top ? "text-white" : "text-black";
   const buttonClasses = navState.top
     ? "border-white-500 text-white-500 hover:border-green-500 hover:bg-green-500 hover:text-white"
@@ -86,13 +92,13 @@ const Navbar = () => {
 
   return (
     <nav className={navClasses}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex justify-between items-center">
-          <div className="flex-shrink-0">
+      <div className=" mx-auto px-10 sm:px-6 lg:px-8 py-4">
+        <div className="flex justify-around items-center ">
+          <div className="flex-shrink-0 ">
             <img
               src="src/assets/Gefx_logo.webp"
               alt="Greens Logo"
-              className="h-14 w-auto sm:h-20 lg:h-24 transition-all duration-300"
+              className="h-[8.19vh] w-7.25vw transition-all duration-300"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src =
@@ -101,7 +107,7 @@ const Navbar = () => {
             />
           </div>
           <ul
-            className={`hidden md:flex items-center text-base sm:text-lg md:text-xl lg:text-2xl space-x-8 lg:space-x-10 font-semibold ${textClasses}`}
+            className={`hidden md:flex items-center text-[2.5vh] lg:space-x-10 font-semibold ${textClasses}`}
           >
             <li>
               <a href="#about" className="hover:opacity-75 transition-opacity">
@@ -109,9 +115,9 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:opacity-75 transition-opacity">
+              <Link to="/courses" className="hover:opacity-75 transition-opacity">
                 Training
-              </a>
+              </Link>
             </li>
             <li>
               <a
@@ -134,7 +140,7 @@ const Navbar = () => {
           </ul>
           <a
             href="#"
-            className={`hidden md:block bg-transparent border-2 rounded-lg px-6 lg:px-8 py-2 lg:py-3 font-semibold transition-all duration-300 text-base lg:text-lg ${buttonClasses}`}
+            className={`hidden md:block bg-transparent border-2 rounded-lg text-[2vh] px-6 lg:px-8 py-2 lg:py-3 font-semibold transition-all duration-300  ${buttonClasses}`}
           >
             Enquire Now
           </a>
@@ -161,7 +167,9 @@ const Navbar = () => {
         </div>
         {isMenuOpen && (
           <div
-            className={`md:hidden mt-4 rounded-md ${navState.top ? "bg-black/20 backdrop-blur-sm" : "bg-white"}`}
+            className={`md:hidden mt-4 rounded-md ${
+              navState.top ? "bg-black/20 backdrop-blur-sm" : "bg-white"
+            }`}
           >
             <ul
               className={`flex flex-col items-center space-y-4 font-semibold py-4 ${textClasses}`}
@@ -172,7 +180,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-75">
+                <a href="Course.jsx" className="hover:opacity-75">
                   Training
                 </a>
               </li>
@@ -217,12 +225,7 @@ const HeroCarousel = () => {
       title: "SOCIAL MEDIA MARKETING",
       color: "text-[#e58a43]",
       features: [
-        "Expert Instructor",
-        "Cutting-Edge facilities",
-        "Comprehensive Course Selection",
-        "Expert Instructor",
-        "Cutting-Edge facilities",
-        "Comprehensive Course Selection",
+        "High-quality visuals that captivate audiences."
       ],
       img: "src/assets/image.webp",
     },
@@ -287,31 +290,34 @@ const HeroCarousel = () => {
     },
   ];
 
-  const scroll = useCallback((direction) => {
-    if (carouselRef.current) {
-      const scrollAmount = carouselRef.current.offsetWidth;
-      let newSlide = currentSlide + direction;
+  const scroll = useCallback(
+    (direction) => {
+      if (carouselRef.current) {
+        const scrollAmount = carouselRef.current.offsetWidth;
+        let newSlide = currentSlide + direction;
 
-      if (newSlide < 0) {
-        newSlide = heroSlides.length - 1;
-      } else if (newSlide >= heroSlides.length) {
-        newSlide = 0;
+        if (newSlide < 0) {
+          newSlide = heroSlides.length - 1;
+        } else if (newSlide >= heroSlides.length) {
+          newSlide = 0;
+        }
+
+        const newScrollPosition = newSlide * scrollAmount;
+
+        carouselRef.current.scrollTo({
+          left: newScrollPosition,
+          behavior: "smooth",
+        });
+        setCurrentSlide(newSlide);
       }
-
-      const newScrollPosition = newSlide * scrollAmount;
-
-      carouselRef.current.scrollTo({
-        left: newScrollPosition,
-        behavior: "smooth",
-      });
-      setCurrentSlide(newSlide);
-    }
-  }, [currentSlide, heroSlides.length]);
+    },
+    [currentSlide, heroSlides.length]
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
       scroll(1);
-    }, 7000); 
+    }, 7000);
 
     return () => clearInterval(interval);
   }, [scroll]);
@@ -324,15 +330,15 @@ const HeroCarousel = () => {
       >
         {heroSlides.map((slide, index) => (
           <div key={index} className="flex-shrink-0 w-full snap-center h-full">
-            <div className="container mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center h-full">
+            <div className="ml-[10vw] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center h-full">
               <div className="w-full md:w-1/2 xl:w-2/3 text-center md:text-left z-10">
                 <h1
-                  className={`font-anton font-[1000] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl ${slide.color} tracking-wider mb-6`}
+                  className={`font-anton font-[1000] text-[8.7vh] ${slide.color} tracking-wider mb-6`}
                   style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
                 >
                   {slide.title}
                 </h1>
-                <ul className="space-y-3 mb-8 font-[900] inline-block text-left text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white">
+                <ul className="space-y-3 mb-8 font-[900] inline-block text-left text-[2.6vh] text-white">
                   {slide.features.map((feature, i) => (
                     <CheckmarkListItem key={i}>{feature}</CheckmarkListItem>
                   ))}
@@ -389,12 +395,10 @@ const Hero = () => (
   </header>
 );
 
-
-
 // About Us Component
 const AboutUs = () => (
   <section id="about" className="min-h-screen flex items-center py-20 lg:py-32">
-    <div className="container mx-auto px-6 lg:px-8">
+    <div className=" ml-[15%] mr-[14%] px-6 lg:px-8">
       <SectionTitle>ABOUT US</SectionTitle>
       <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
         <div className="w-full md:w-5/12">
@@ -404,13 +408,15 @@ const AboutUs = () => (
             className="w-full rounded-lg "
           />
         </div>
-        <div className="w-full md:w-7/12 text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed">
+        <div className="w-full md:w-7/12 text-[2.5vh] leading-relaxed">
           <p className="mb-6">
-            GreenEFX Media founded in 2007. We are providing best and affordable
-            3d Animation,VFX, Web & Graphics designing course and job oriented
-            training with live projects internship program.
+            At Greenefx Media, creativity meets technology to craft powerful
+            visual stories and impactful digital experiences. We are a
+            full-service media and design company specializing in 3D Animation,
+            VFX, Creative Advertising, Digital Marketing, Web Design &
+            Development, and Branding Solutions.
           </p>
-          <ul className="space-y-4 mb-8 text-gray-800 font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
+          {/* <ul className="space-y-4 mb-8 text-gray-800 font-semibold text-sm sm:text-base md:text-lg lg:text-xl">
             <li className="flex items-center">
               <svg
                 className="w-7 h-7 mr-4 text-[#5a9c3b]"
@@ -453,17 +459,19 @@ const AboutUs = () => (
               </svg>
               Comprehensive Course Selection
             </li>
-          </ul>
+          </ul> */}
           <p>
-            To be the best Training institute for VFX & Graphics Designing
-            Course in our region. To be the state of art of the Visual Effects
-            and cutting edge in technology for any form of Computer Graphics. We
-            believe that amazing results come from a combination of Creative
-            Artists, Leads, and Supervisors with proper planning and execution
-            by meeting the international quality standards. We are renowned for
-            the business advertising films to reach the international standards.
-            We always offer top-notch creativity that exceeds your expectations
-            using the latest and advanced techniques.
+               Our mission is simple – to transform ideas into powerful visuals and
+            digital strategies that inspire, educate, and engage audiences. With
+            a passionate team of designers, animators, marketers, and
+            developers, we bring imagination to life while helping businesses
+            grow in the digital space. <br /><br />
+            At Greenefx Media, we don’t just create
+            designs or strategies – we create experiences that connect and
+            deliver impact. <br />
+            Driven by passion, powered by innovation, and
+            trusted by our clients – we are your partner in shaping ideas into
+            reality.
           </p>
         </div>
       </div>
@@ -491,18 +499,32 @@ const Services = () => {
       icon: faCogs,
       bgColor: "bg-green-500/10",
       textColor: "text-green-500",
+      description:
+        "We bring imagination to life with high-quality 3D Animation and Visual Effects. From product visualizations to cinematic sequences, our team delivers stunning visuals that educate, entertain, and engage. Whether it’s for films, advertisements, or educational content, our animations make ideas unforgettable.",
     },
     {
       title: "GRAPHICS DESIGN SERVICES",
       icon: faPaintBrush,
       bgColor: "bg-green-500/10",
       textColor: "text-green-500",
+      description:
+        "We craft visual identities that leave a lasting impression. From logos and brand guidelines to brochures and packaging, our designs reflect professionalism and creativity. We ensure your brand not only looks good but also communicates trust and value.",
     },
     {
-      title: "Social Media & Promotional Videos",
+      title: "Creative Advertising & Promotions",
       icon: faBullhorn,
       bgColor: "bg-green-500/10",
       textColor: "text-green-500",
+      description:
+        "Your brand deserves to stand out. Our creative ad campaigns are designed to capture attention, connect with your audience, and drive real results. From TV commercials to social media promotions, we blend creativity and strategy to help your brand shine in the competitive marketplace.",
+    },
+    {
+      title: "Digital Marketing",
+      icon: faChartSimple,
+      bgColor: "bg-green-500/10",
+      textColor: "text-green-500",
+      description:
+        "Grow your business in the digital age with our 360° digital marketing solutions. We specialize in: SEO (Search Engine Optimization) – Get found on Google and increase organic traffic. Social Media Marketing – Build strong online presence and engage your audience. Paid Advertising – Targeted ad campaigns to maximize ROI. Content Marketing – Engaging content that drives trust and conversions. We don’t just market your brand—we help it connect, engage, and grow.",
     },
   ];
 
@@ -511,8 +533,19 @@ const Services = () => {
       id="services"
       className="min-h-screen flex flex-col justify-center py-20 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-100"
     >
+      <style>
+        {`
+          .no-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}
+      </style>
       <SectionTitle>Our Services</SectionTitle>
-      <div className="container mx-auto px-6 lg:px-8 relative">
+      <div className="ml-[12%] mr-[12%] h-[50vh]  px-6 lg:px-8 relative">
         <div
           ref={carouselRef}
           className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar -mx-4"
@@ -520,11 +553,11 @@ const Services = () => {
           {serviceCards.map((card, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 snap-center px-4"
+              className="flex-shrink-0 w-[25vw] h-[50vh] snap-center px-4 "
             >
               <div className="group bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col text-center p-8 transform hover:-translate-y-2 min-h-[500px]">
                 <div
-                  className={`mx-auto mb-6 ${card.bgColor} w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110`}
+                  className={`mx-auto mb-6 ${card.bgColor} w-[8vh] h-[8vh] p-24% rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110`}
                 >
                   <FontAwesomeIcon
                     icon={card.icon}
@@ -532,13 +565,12 @@ const Services = () => {
                   />
                 </div>
                 <h3
-                  className={`font-poppins font-bold text-xl lg:text-2xl text-gray-800 mb-4`}
+                  className={`font-poppins font-bold text-[2.7vh] text-gray-800 mb-6 `}
                 >
                   {card.title}
                 </h3>
-                <p className="font-poppins text-gray-600 leading-relaxed flex-grow">
-                  Crafting unique graphics that capture attention and
-                  communicate your brand's essence.
+                <p className="font-poppins text-[1.7vh] text-gray-600 leading-relaxed flex-grow">
+                  {card.description}
                 </p>
                 <div className="mt-6">
                   <a
@@ -554,13 +586,13 @@ const Services = () => {
         </div>
         <button
           onClick={() => scroll(-1)}
-          className="absolute top-1/2 -left-4 lg:-left-8 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white text-gray-800 p-3 rounded-full shadow-md z-10 transition-all duration-300"
+          className="absolute top-1/2 -left-4 lg:-left-[5%] transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white text-gray-800 p-3 text-[2vh] rounded-full shadow-md z-10 transition-all duration-300"
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button
           onClick={() => scroll(1)}
-          className="absolute top-1/2 -right-4 lg:-right-8 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white text-gray-800 p-3 rounded-full shadow-md z-10 transition-all duration-300"
+          className="absolute top-1/2 -right-4 lg:-right-[5%] transform -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white text-gray-800 p-3 text-[2vh] rounded-full shadow-md z-10 transition-all duration-300"
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
@@ -600,19 +632,16 @@ const OurClients = () => {
           }
         `}
       </style>
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="ml-[10%] mr-[10%] px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#4CAF4F]">
-            OUR CLIENTS
-          </h2>
-          <div className="mt-4 w-24 mx-auto border-t-4 border-green-400"></div>
+          <h2 className="text-[5vh] font-bold text-[#4CAF4F]">OUR CLIENTS</h2>
         </div>
         <div className="relative overflow-hidden">
           <div className="flex scrolling-wrapper">
             {duplicatedClients.map((icon, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-48 h-32 flex items-center justify-center p-4 lg:p-6 border-2 border-gray-200 rounded-xl bg-white shadow-md mx-4"
+                className="flex-shrink-0 w-[8vw] h-[9vh] flex items-center justify-center p-4 lg:p-6 border-2 border-gray-200 rounded-xl bg-white shadow-md mx-4"
               >
                 <FontAwesomeIcon
                   icon={icon}
@@ -622,112 +651,6 @@ const OurClients = () => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
-
-// Training Component
-const Training = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const carouselRef = useRef(null);
-  const trainingCards = [
-    {
-      title: "3D Animation Training",
-      text: "We bring your ideas to life with stunning 3D animation and jaw-dropping VFX.",
-      icon: faAtom,
-      iconColor: "text-pink-400",
-      bgColor: "bg-pink-100/50",
-    },
-    {
-      title: "Graphics Designing Training",
-      text: "Crafting unique graphics that capture attention and communicate your brand's essence.",
-      icon: faChartSimple,
-      iconColor: "text-white",
-      bgColor: "bg-white/20",
-      isCenter: true,
-    },
-    {
-      title: "IT Training",
-      text: "Building digital worlds and overlays for real-world experiences.",
-      icon: faCode,
-      iconColor: "text-blue-400",
-      bgColor: "bg-blue-100/50",
-    },
-  ];
-
-  useEffect(() => {
-    if (carouselRef.current) {
-      const itemWidth =
-        carouselRef.current.querySelector(".carousel-item").offsetWidth;
-      const offset =
-        -currentIndex * itemWidth +
-        carouselRef.current.parentElement.offsetWidth / 2 -
-        itemWidth / 2;
-      carouselRef.current.style.transform = `translateX(${offset}px)`;
-    }
-  }, [currentIndex]);
-
-  const nextSlide = () =>
-    setCurrentIndex((prev) => (prev + 1) % trainingCards.length);
-  const prevSlide = () =>
-    setCurrentIndex(
-      (prev) => (prev - 1 + trainingCards.length) % trainingCards.length
-    );
-
-  return (
-    <section className="min-h-screen flex flex-col justify-center py-20 lg:py-32">
-      <SectionTitle>Training</SectionTitle>
-      <div className="relative container mx-auto px-6 lg:px-8">
-        <div className="overflow-hidden">
-          <div ref={carouselRef} className="flex -mx-4 transition-transform duration-500 ease-in-out">
-            {trainingCards.map((card, index) => (
-              <div
-                key={index}
-                className="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
-              >
-                <div
-                  className={`h-full rounded-2xl shadow-lg p-8 lg:p-10 text-center border flex flex-col justify-between transition-all duration-300 ${currentIndex === index ? "scale-105 bg-gradient-to-b from-[#7FA629] to-[#314010] text-white border-green-700" : "bg-white"}`}
-                >
-                  <div>
-                    <div
-                      className={`mb-6 inline-block p-6 ${card.bgColor} rounded-full`}
-                    >
-                      <FontAwesomeIcon
-                        icon={card.icon}
-                        className={`text-5xl lg:text-6xl ${card.iconColor}`}
-                      />
-                    </div>
-                    <h3 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mb-3">{card.title}</h3>
-                    <p
-                      className={`text-sm sm:text-base md:text-lg lg:text-xl ${currentIndex === index ? "" : "text-gray-600"} leading-relaxed`}
-                    >
-                      {card.text}
-                    </p>
-                  </div>
-                  <a
-                    href="#"
-                    className={`mt-6 w-12 h-12 border rounded-full flex items-center justify-center ${currentIndex === index ? "text-white hover:bg-white/10" : "text-gray-400 hover:bg-gray-100"}`}
-                  >
-                    {currentIndex === index ? <FontAwesomeIcon icon={faArrowRight} /> : <FontAwesomeIcon icon={faPlus} />}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <button
-          onClick={prevSlide}
-          className="absolute top-1/2 -left-4 lg:-left-8 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full shadow-md z-10 border flex items-center justify-center"
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute top-1/2 -right-4 lg:-right-8 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full shadow-md z-10 border flex items-center justify-center"
-        >
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
       </div>
     </section>
   );
@@ -822,14 +745,19 @@ const ClientTestimonials = () => {
       <div className="container mx-auto px-6 lg:px-8 relative">
         <SectionTitle>Client Testimonial</SectionTitle>
         <div className="relative overflow-hidden">
-          <div ref={testimonialsRef} className="flex transition-transform duration-500 ease-in-out">
+          <div
+            ref={testimonialsRef}
+            className="flex transition-transform duration-500 ease-in-out"
+          >
             {testimonials.map((t, i) => (
               <div
                 key={i}
                 className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-4"
               >
                 <div
-                  className={`bg-white rounded-lg p-8 shadow-lg h-full ${t.isFeatured ? "border-2 border-[#4CAF4F]" : ""}`}
+                  className={`bg-white rounded-lg p-8 shadow-lg h-full ${
+                    t.isFeatured ? "border-2 border-[#4CAF4F]" : ""
+                  }`}
                 >
                   <div className="text-gray-500 text-5xl mb-4">“</div>
                   <p className="font-poppins italic text-gray-800 mb-4 text-sm sm:text-base md:text-lg lg:text-xl">
@@ -872,6 +800,133 @@ const ClientTestimonials = () => {
   );
 };
 
+
+// Training Component
+const Training = () => {
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const carouselRef = useRef(null);
+  const trainingCards = [
+    {
+      title: "3D Animation Training",
+      text: "We bring your ideas to life with stunning 3D animation and jaw-dropping VFX.",
+      icon: faAtom,
+      iconColor: "text-pink-400",
+      bgColor: "bg-pink-100/50",
+    },
+    {
+      title: "Graphics Designing Training",
+      text: "Crafting unique graphics that capture attention and communicate your brand's essence.",
+      icon: faChartSimple,
+      iconColor: "text-white",
+      bgColor: "bg-white/20",
+      isCenter: true,
+    },
+    {
+      title: "IT Training",
+      text: "Building digital worlds and overlays for real-world experiences.",
+      icon: faCode,
+      iconColor: "text-blue-400",
+      bgColor: "bg-blue-100/50",
+    },
+  ];
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      const itemWidth =
+        carouselRef.current.querySelector(".carousel-item").offsetWidth;
+      const offset =
+        -currentIndex * itemWidth +
+        carouselRef.current.parentElement.offsetWidth / 2 -
+        itemWidth / 2;
+      carouselRef.current.style.transform = `translateX(${offset}px)`;
+    }
+  }, [currentIndex]);
+
+  const nextSlide = () =>
+    setCurrentIndex((prev) => (prev + 1) % trainingCards.length);
+  const prevSlide = () =>
+    setCurrentIndex(
+      (prev) => (prev - 1 + trainingCards.length) % trainingCards.length
+    );
+
+  return (
+    <section className="min-h-screen flex flex-col justify-center py-20 lg:py-32">
+      <SectionTitle>Training</SectionTitle>
+      <div className="relative container mx-auto px-6 lg:px-8">
+        <div className="overflow-hidden">
+          <div
+            ref={carouselRef}
+            className="flex -mx-4 transition-transform duration-500 ease-in-out"
+          >
+            {trainingCards.map((card, index) => (
+              <div
+                key={index}
+                className="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
+              >
+                <div
+                  className={`h-full rounded-2xl shadow-lg p-8 lg:p-10 text-center border flex flex-col justify-between transition-all duration-300 ${
+                    currentIndex === index
+                      ? "scale-105 bg-gradient-to-b from-[#7FA629] to-[#314010] text-white border-green-700"
+                      : "bg-white"
+                  }`}
+                >
+                  <div>
+                    <div
+                      className={`mb-6 inline-block p-6 ${card.bgColor} rounded-full`}
+                    >
+                      <FontAwesomeIcon
+                        icon={card.icon}
+                        className={`text-5xl lg:text-6xl ${card.iconColor}`}
+                      />
+                    </div>
+                    <h3 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mb-3">
+                      {card.title}
+                    </h3>
+                    <p
+                      className={`text-sm sm:text-base md:text-lg lg:text-xl ${
+                        currentIndex === index ? "" : "text-gray-600"
+                      } leading-relaxed`}
+                    >
+                      {card.text}
+                    </p>
+                  </div>
+                  <a
+                    href="#"
+                    className={`mt-6 w-12 h-12 border rounded-full flex items-center justify-center ${
+                      currentIndex === index
+                        ? "text-white hover:bg-white/10"
+                        : "text-gray-400 hover:bg-gray-100"
+                    }`}
+                  >
+                    {currentIndex === index ? (
+                      <FontAwesomeIcon icon={faArrowRight} />
+                    ) : (
+                      <FontAwesomeIcon icon={faPlus} />
+                    )}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <button
+          onClick={prevSlide}
+          className="absolute top-1/2 -left-4 lg:-left-8 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full shadow-md z-10 border flex items-center justify-center"
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute top-1/2 -right-4 lg:-right-8 transform -translate-y-1/2 bg-white text-gray-800 w-12 h-12 rounded-full shadow-md z-10 border flex items-center justify-center"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
+      </div>
+    </section>
+  );
+};
+
+
 // Student Testimonials Component
 const StudentTestimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -909,9 +964,17 @@ const StudentTestimonials = () => {
             {studentTestimonials.map((s, i) => (
               <div
                 key={i}
-                className={`absolute w-full h-full transition-opacity duration-1000 ease-in-out ${currentIndex === i ? "opacity-100" : "opacity-0"}`}>
+                className={`absolute w-full h-full transition-opacity duration-1000 ease-in-out ${
+                  currentIndex === i ? "opacity-100" : "opacity-0"
+                }`}
+              >
                 <div
-                  className={`flex flex-col md:flex-row items-center justify-center h-full transform transition-transform duration-1000 ease-in-out ${currentIndex === i ? "scale-100 translate-y-0" : "scale-95 translate-y-10"}`}>
+                  className={`flex flex-col md:flex-row items-center justify-center h-full transform transition-transform duration-1000 ease-in-out ${
+                    currentIndex === i
+                      ? "scale-100 translate-y-0"
+                      : "scale-95 translate-y-10"
+                  }`}
+                >
                   <div className="w-full md:w-2/5 bg-white p-8 lg:p-10 rounded-2xl shadow-2xl relative flex flex-col justify-center z-10 order-2 md:order-1">
                     <div className="absolute -top-6 -left-6 text-9xl text-green-100/50 z-0">
                       “
@@ -923,7 +986,9 @@ const StudentTestimonials = () => {
                       <h4 className="font-bold text-lg md:text-xl lg:text-2xl text-green-600">
                         {s.name}
                       </h4>
-                      <p className="text-sm md:text-base text-gray-500">{s.role}</p>
+                      <p className="text-sm md:text-base text-gray-500">
+                        {s.role}
+                      </p>
                     </div>
                   </div>
                   <div className="w-full md:w-3/5 h-64 md:h-full rounded-2xl shadow-2xl -ml-0 md:-ml-12 order-1 md:order-2 mb-6 md:mb-0">
@@ -942,19 +1007,29 @@ const StudentTestimonials = () => {
               <button
                 key={i}
                 onClick={() => goToSlide(i)}
-                className={`w-3 h-3 rounded-full ${currentIndex === i ? "bg-green-500" : "bg-gray-300"} transition-colors duration-300`}
+                className={`w-3 h-3 rounded-full ${
+                  currentIndex === i ? "bg-green-500" : "bg-gray-300"
+                } transition-colors duration-300`}
               ></button>
             ))}
           </div>
         </div>
         <button
-          onClick={() => setCurrentIndex((prev) => (prev - 1 + studentTestimonials.length) % studentTestimonials.length)}
+          onClick={() =>
+            setCurrentIndex(
+              (prev) =>
+                (prev - 1 + studentTestimonials.length) %
+                studentTestimonials.length
+            )
+          }
           className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white/70 hover:bg-white text-gray-700 w-12 h-12 rounded-full shadow-lg z-20 flex items-center justify-center border border-gray-200 transition-all duration-300 hover:scale-105"
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button
-          onClick={() => setCurrentIndex((prev) => (prev + 1) % studentTestimonials.length)}
+          onClick={() =>
+            setCurrentIndex((prev) => (prev + 1) % studentTestimonials.length)
+          }
           className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white/70 hover:bg-white text-gray-700 w-12 h-12 rounded-full shadow-lg z-20 flex items-center justify-center border border-gray-200 transition-all duration-300 hover:scale-105"
         >
           <FontAwesomeIcon icon={faChevronRight} />
@@ -972,7 +1047,9 @@ const Careers = () => (
   >
     <div className="container mx-auto px-6 lg:px-8">
       <div className="text-center mb-12 lg:mb-16">
-        <h2 className="text-4xl lg:text-5xl font-bold text-[#4CAF4F]">Careers</h2>
+        <h2 className="text-4xl lg:text-5xl font-bold text-[#4CAF4F]">
+          Careers
+        </h2>
         <p className="mt-4 max-w-3xl mx-auto text-gray-600 leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl">
           We believe that our greatest asset is our people. We are passionate
           about creating a dynamic and inclusive work environment where
@@ -1043,7 +1120,9 @@ const Contact = () => (
   <section className="min-h-screen flex flex-col justify-center py-20 lg:py-32">
     <div className="container mx-auto px-6 lg:px-8">
       <div className="text-center mb-12 lg:mb-16">
-        <h2 className="text-4xl lg:text-5xl font-bold text-[#4CAF4F]">Contact</h2>
+        <h2 className="text-4xl lg:text-5xl font-bold text-[#4CAF4F]">
+          Contact
+        </h2>
         <p className="mt-4 max-w-3xl mx-auto text-gray-600 leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl">
           Reach out to us today and take the first step toward your creative
           journey with GREENEFX MEDIA.
@@ -1056,7 +1135,9 @@ const Contact = () => (
           <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-white/10 rounded-full"></div>
           <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
           <div className="relative z-10">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-2">Contact Information</h3>
+            <h3 className="text-2xl lg:text-3xl font-bold mb-2">
+              Contact Information
+            </h3>
             <p className="mb-10 text-white/90 text-sm sm:text-base md:text-lg lg:text-xl">
               Say something to start a live chat!
             </p>
@@ -1070,7 +1151,10 @@ const Contact = () => (
                 <span>greenefx.media@gmail.com</span>
               </div>
               <div className="flex items-start">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-xl mr-4 mt-1" />
+                <FontAwesomeIcon
+                  icon={faMapMarkerAlt}
+                  className="text-xl mr-4 mt-1"
+                />
                 <span>
                   #508, 1st Floor
                   <br />
@@ -1188,7 +1272,8 @@ const Contact = () => (
                 type="submit"
                 className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-md hover:from-green-600 hover:to-emerald-700 transition-all duration-300 text-base lg:text-lg"
               >
-                Send Message <FontAwesomeIcon icon={faPaperPlane} className="ml-3" />
+                Send Message{" "}
+                <FontAwesomeIcon icon={faPaperPlane} className="ml-3" />
               </button>
             </div>
           </form>
@@ -1204,7 +1289,9 @@ const Footer = () => (
     <div className="container mx-auto px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         <div className="col-span-1 md:col-span-2 lg:col-span-1">
-          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">Reach us</h4>
+          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">
+            Reach us
+          </h4>
           <div className="space-y-4 text-sm sm:text-base md:text-lg">
             <div className="flex items-center">
               <FontAwesomeIcon icon={faPhoneAlt} className="mr-3" />
@@ -1223,7 +1310,9 @@ const Footer = () => (
           </div>
         </div>
         <div>
-          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">Company</h4>
+          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">
+            Company
+          </h4>
           <ul className="space-y-2 text-sm sm:text-base md:text-lg">
             <li>
               <a href="#" className="hover:underline">
@@ -1238,7 +1327,9 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">Legal</h4>
+          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">
+            Legal
+          </h4>
           <ul className="space-y-2 text-sm sm:text-base md:text-lg">
             <li>
               <a href="#" className="hover:underline">
@@ -1258,7 +1349,9 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">Quick Links</h4>
+          <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">
+            Quick Links
+          </h4>
           <ul className="space-y-2 text-sm sm:text-base md:text-lg">
             <li>
               <a href="#" className="hover:underline">
@@ -1274,7 +1367,9 @@ const Footer = () => (
         </div>
         <div className="col-span-1 md:col-span-2 lg:col-span-1">
           <div className="bg-gray-800 p-6 rounded-lg">
-            <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">Join Our YOUTUBE CHANNEL</h4>
+            <h4 className="font-bold text-base sm:text-lg md:text-xl mb-4">
+              Join Our YOUTUBE CHANNEL
+            </h4>
             <div className="flex">
               <input
                 type="email"
@@ -1309,8 +1404,8 @@ export default function App() {
         <AboutUs />
         <Services />
         <OurClients />
-        <Training />
         <ClientTestimonials />
+        <Training />
         <StudentTestimonials />
         <Careers />
         <Contact />
