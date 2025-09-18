@@ -1,36 +1,4 @@
 import React, { useState, useEffect } from "react";
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-  faArrowRight,
-  faPlus,
-  faStar,
-  faStarHalfAlt,
-  faPaperPlane,
-  faCogs,
-  faPaintBrush,
-  faBullhorn,
-  faAtom,
-  faChartSimple,
-  faCode,
-  faPhoneAlt,
-  faEnvelope,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { faStar as faRegStar } from "@fortawesome/free-regular-svg-icons";
-import {
-  faLine,
-  faFacebookF,
-  faSpotify,
-  faPlaystation,
-  faDribbble,
-  faApple,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
 
 // FAKE ICONS FOR DEMONSTRATION - In a real app, you would import these from a library like react-icons
 const FaChevronLeft = () => <i className="fas fa-chevron-left"></i>;
@@ -41,94 +9,73 @@ const FaSearch = () => <i className="fas fa-search"></i>;
 // Navbar Component (Adapted for a single-page context)
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [navState, setNavState] = useState({ visible: true, top: true });
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const visible = lastScrollY > currentScrollY || currentScrollY < 10;
-      const top = currentScrollY < 50;
-
-      setNavState({ visible, top });
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navClasses = `fixed top-0 left-0 right-0 z-50 duration-300 ${ 
-    navState.visible ? "translate-y-0" : "-translate-y-full" 
-  } ${ 
-    navState.top ? "bg-transparent text-white" : "bg-white text-black shadow-md" 
-  }`;
-  const textClasses = navState.top ? "text-white" : "text-black";
-  const buttonClasses = navState.top
-    ? "border-white-500 text-white-500 hover:border-green-500 hover:bg-green-500 hover:text-white"
-    : "border-green-500 text-green-500 hover:bg-green-500 hover:text-white";
-  const mobileMenuButtonClasses = navState.top ? "text-white" : "text-black";
+  // Since this is only the blog page, the navbar is always white.
+  const navClasses = `sticky top-0 z-50 bg-white shadow-md`;
+  const textClasses = `text-black`;
+  const buttonClasses = `border-green-500 text-green-500 hover:bg-green-500 hover:text-white`;
+  const logoSrc = "/assets/greens-logo-dark.png";
 
   return (
     <nav className={navClasses}>
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="ml-[5%] mr-[7%] flex justify-evenly items-center ">
-          <div className="flex-shrink-0 ">
-            <img
-              src="src/assets/Gefx_logo.webp"
-              alt="Greens Logo"
-              className="h-[5vw]  transition-all duration-300"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src =
-                  "https://placehold.co/150x50/transparent/333333?text=Logo";
-              }}
-            />
+      <div className="container mx-auto px-4 sm:px-6 py-4">
+        <div className="flex justify-between items-center">
+          <div className="flex-shrink-0">
+            <a href="/" className="cursor-pointer">
+              <img
+                src={logoSrc}
+                alt="Greens Logo"
+                className="h-10 sm:h-12 transition-all duration-300"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://placehold.co/150x50/transparent/333333?text=Logo";
+                }}
+              />
+            </a>
           </div>
           <ul
-            className={`hidden md:flex items-center text-[1.3vw] lg:space-x-10 font-semibold ${textClasses}`}
+            className={`hidden md:flex items-center space-x-8 font-semibold ${textClasses}`}
           >
             <li>
-              <a href="#about" className="hover:opacity-75 transition-opacity">
-                About
-              </a>
-            </li>
-           
-            <li>
-              <Link to="/services" className="hover:opacity-75">
-                Service
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/Courses"
-                className="hover:opacity-75 transition-opacity"
-              >
-                Training
-              </Link>
-            </li>
-            <li>
-              <a href="#career" className="hover:opacity-75 transition-opacity">
-                Career
+              <a href="/" className="hover:opacity-75 transition-opacity">
+                Home
               </a>
             </li>
             <li>
               <a href="#" className="hover:opacity-75 transition-opacity">
+                Training
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:opacity-75 transition-opacity">
+                Services
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:opacity-75 transition-opacity">
+                Career
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-green-500 font-bold transition-opacity cursor-pointer"
+              >
                 Blog
               </a>
             </li>
           </ul>
           <a
             href="#"
-            className={`hidden md:block bg-transparent border-2 rounded-lg text-base px-6 lg:px-8 py-2 lg:py-3 font-semibold transition-all duration-300  ${buttonClasses}`}
+            className={`hidden md:block bg-transparent border-2 rounded-lg px-6 py-2 font-semibold transition-all duration-300 ${buttonClasses}`}
           >
             Enquire Now
           </a>
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`${mobileMenuButtonClasses} focus:outline-none`}
+              className="text-black focus:outline-none"
             >
               <svg
                 className="w-6 h-6"
@@ -140,32 +87,24 @@ const Navbar = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d={
-                    isMenuOpen
-                      ? "M6 18L18 6M6 6l12 12"
-                      : "M4 6h16M4 12h16m-7 6h7"
-                  }
+                  d="M4 6h16M4 12h16m-7 6h7"
                 ></path>
               </svg>
             </button>
           </div>
         </div>
         {isMenuOpen && (
-          <div
-            className={`md:hidden mt-4 rounded-md ${
-              navState.top ? "bg-black/20 backdrop-blur-sm" : "bg-white"
-            }`}
-          >
+          <div className="md:hidden mt-4 rounded-md bg-white">
             <ul
               className={`flex flex-col items-center space-y-4 font-semibold py-4 ${textClasses}`}
             >
               <li>
-                <a href="#" className="hover:opacity-75">
-                  About
+                <a href="/" className="hover:opacity-75">
+                  Home
                 </a>
               </li>
               <li>
-                <a href="Course.jsx" className="hover:opacity-75">
+                <a href="#" className="hover:opacity-75">
                   Training
                 </a>
               </li>
@@ -175,12 +114,12 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a href="#career" className="hover:opacity-75">
+                <a href="#" className="hover:opacity-75">
                   Career
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:opacity-75">
+                <a href="#" className="text-green-500 font-bold">
                   Blog
                 </a>
               </li>
