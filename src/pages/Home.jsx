@@ -98,7 +98,7 @@ const Navbar = () => {
             <img
               src="src/assets/Gefx_logo.webp"
               alt="Greens Logo"
-              className="h-[5vw]  transition-all duration-300"
+              className="h-[5vw] md:h-[4rem] w-auto transition-all duration-300"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src =
@@ -338,7 +338,7 @@ const HeroCarousel = () => {
             <div className="ml-0 md:ml-[10vw] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center h-full">
               <div className="w-full md:w-1/2 xl:w-2/3 text-center md:text-left z-10">
                 <h1
-                  className={`font-poppins font-[1000] text-5xl md:text-7xl lg:text-8xl ${slide.color} tracking-wider mb-6`}
+                  className={`font-poppins font-[1000] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl ${slide.color} tracking-wider mb-6`}
                   style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
                 >
                   {slide.title}
@@ -376,7 +376,7 @@ const HeroCarousel = () => {
 
 // Hero Component (Wrapper for Carousel)
 const Hero = () => (
-  <header className="bg-gradient-to-r from-[#8bce4a] to-[#5a9c3b] text-white relative overflow-hidden h-screen flex flex-col">
+  <header className="bg-gradient-to-r from-[#8bce4a] to-[#5a9c3b] text-white relative overflow-hidden min-h-screen flex flex-col">
     {/* Background Video */}
     <video
       className="absolute inset-0 w-full h-full object-cover z-0"
@@ -402,7 +402,7 @@ const Hero = () => (
 
 // About Us Component
 const AboutUs = () => (
-  <section id="about" className="h-[80vh] flex items-center py-20 lg:py-32">
+  <section id="about" className="min-h-[80vh] md:min-h-[70vh] lg:min-h-[60vh] flex items-center py-20 lg:py-32">
     <div className="container mx-auto px-6 lg:px-8">
       <SectionTitle>ABOUT US</SectionTitle>
       <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
@@ -493,7 +493,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="h-[80vh] flex flex-col justify-center py-20 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-100"
+      className="min-h-[80vh] flex flex-col justify-center py-20 lg:py-32 bg-gradient-to-br from-green-50 to-emerald-100"
     >
       <style>
         {`
@@ -507,17 +507,17 @@ const Services = () => {
         `}
       </style>
       <SectionTitle>Our Services</SectionTitle>
-      <div className="container mt-10 mx-auto px-6 lg:px-8 relative">
+      <div className=" container mt-10 mx-auto px-6 lg:px-8 relative">
         <div
           ref={carouselRef}
-          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar -mx-4"
+          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar -mx-2 gap-4"
         >
           {serviceCards.map((card, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 snap-center px-4"
+              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 snap-center px-2"
             >
-              <div className="group bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col text-center p-8 transform hover:-translate-y-2 min-h-[450px] md:min-h-[500px]">
+              <div className="group bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col text-center p-8 transform hover:-translate-y-2 min-h-[480px] md:min-h-[520px] ">
                 <div
                   className={`mx-auto mb-6 ${card.bgColor} w-16 h-16 p-4 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110`}
                 >
@@ -677,40 +677,40 @@ const ClientTestimonials = () => {
 
   const testimonials = [
     {
-      name: "JOHN",
-      role: "Team",
-      text: "I HAD GREAT OPPRUNITES AND I IMPROVED MY SKILLS",
+      name: "ALPHAEUS JAYACHANDRAN",
+      role: "Client",
+      text: "Our experience with EFX Multimedia was exceptional. They delivered a promotional video with high-quality visuals and engaging animations that perfectly captured our message. We highly recommend them for their creativity, professionalism, and commitment to education.",
       rating: 4,
-      img: "https://placehold.co/80x80/cccccc/333333?text=JD",
+      img: "https://placehold.co/80x80/cccccc/333333?text=AJ",
       isFeatured: true,
     },
     {
-      name: "CHRISHI",
-      role: "Animator",
-      text: "I HAD GREAT OPPRUNITES AND I IMPROVED MY SKILLS",
+      name: "Joel Medikalaji",
+      role: "Client",
+      text: "We got our explanation video for our start-up it was fabulous from the scrach it was smooth and can recomend them for budget, quality -timely delivery",
       rating: 5,
-      img: "https://placehold.co/80x80/cccccc/333333?text=CR",
+      img: "https://placehold.co/80x80/cccccc/333333?text=JM",
     },
     {
-      name: "Ryan",
-      role: "Royal cars",
-      text: "I HAD GREAT OPPRUNITES AND I IMPROVED MY SKILLS",
+      name: "Selvaganapathi Thirunavukkarasu",
+      role: "client",
+      text: "Excellent work at the right time.",
       rating: 4.5,
-      img: "https://placehold.co/80x80/cccccc/333333?text=RY",
+      img: "https://placehold.co/80x80/cccccc/333333?text=ST",
     },
     {
-      name: "Alex",
-      role: "Developer",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      name: "saravanan K B balakrishnan",
+      role: "Client",
+      text: "Greenfx 3D Animations impressed us with their stunning visuals and creative excellence. Their professional and reliable team brought our ideas to life beyond our expectations, and we're grateful for their exceptional work.",
       rating: 5,
-      img: "https://placehold.co/80x80/cccccc/333333?text=AS",
+      img: "https://placehold.co/80x80/cccccc/333333?text=SB",
     },
     {
-      name: "Emily",
-      role: "Designer",
-      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+      name: "Enoch Thomas",
+      role: "Client",
+      text: "One Stop Solution for Graphic design at Vellore. Great 👍 for global services.",
       rating: 4.5,
-      img: "https://placehold.co/80x80/cccccc/333333?text=EM",
+      img: "https://placehold.co/80x80/cccccc/333333?text=ET",
     },
     {
       name: "Michael",
@@ -753,7 +753,7 @@ const ClientTestimonials = () => {
   }, [currentPage, itemsPerPage, testimonials.length]);
 
   return (
-    <section className="h-[65vh] flex flex-col justify-center py-20 lg:py-32 bg-[#E6FFE7]">
+    <section className="min-h-[65vh] md:min-h-[70vh] lg:min-h-[60vh] flex flex-col justify-center py-20 lg:py-32 bg-[#E6FFE7]">
       <div className="container mx-auto px-6 lg:px-8 relative">
         <SectionTitle>Client Testimonial</SectionTitle>
         <div className="relative overflow-hidden mt-7">
@@ -909,7 +909,7 @@ const StudentTestimonials = () => {
   };
 
   return (
-    <section className="h-[75vh] flex flex-col justify-center py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-gray-200 overflow-hidden">
+    <section className="min-h-[75vh] md:min-h-[80vh] lg:min-h-[70vh] flex flex-col justify-center py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-gray-200 overflow-hidden">
       <div className="container mx-auto relative px-6 lg:px-8">
         <SectionTitle>What Our Students Say</SectionTitle>
         <div className="relative mt-7 w-full max-w-4xl mx-auto h-auto">
@@ -1070,7 +1070,7 @@ const Careers = () => (
 
 // Contact Component
 const Contact = () => (
-  <section className="h-[90vh] flex flex-col justify-center py-20 lg:py-32">
+  <section className="min-h-[90vh] md:min-h-[95vh] lg:min-h-[85vh] flex flex-col justify-center py-20 lg:py-32">
     <div className="container mx-auto px-6 lg:px-8">
       <div className="text-center mb-12 lg:mb-16">
         <h2 className="text-4xl lg:text-5xl font-bold text-[#4CAF4F]">
