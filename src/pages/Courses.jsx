@@ -12,11 +12,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 
-// --- MOCK DATA ---
 const courses = [
   {
     id: 1,
     title: "Diploma in Multimedia Design & Ai Creativity",
+    heroImage: "/src/assets/hero1.webp",
     shortDescription:
       "Explore the future of design in our offline classes. Combine traditional multimedia skills with cutting-edge AI tools for stunning creative projects.",
     longDescription:
@@ -141,7 +141,7 @@ const courses = [
       },
     ],
     images: [
-      "https://placehold.co/600x400/d8b4fe/4a5568?text=AI+Creativity+Lab",
+      "https://i.imgur.com/8Q1ZQ5V.png",
       "https://placehold.co/600x400/c084fc/4a5568?text=Multimedia+Projects",
       "https://placehold.co/600x400/a855f7/4a5568?text=Expert+Guidance",
     ],
@@ -149,6 +149,7 @@ const courses = [
   {
     id: 2,
     title: "Diploma in Graphic Design & Print Media",
+    heroImage: "/src/assets/hero2.webp",
     shortDescription:
       "Master Photoshop, Illustrator, InDesign, & CorelDRAW in our comprehensive 6-month offline training program focused on the print and photo media industry.",
     longDescription:
@@ -277,105 +278,110 @@ const courses = [
       },
     ],
     images: [
-      "https://placehold.co/600x400/fca5a5/4a5568?text=Print+Design+Studio",
+      "https://placehold.co/1200x400/fca5a5/4a5568?text=Graphic+Design",
       "https://placehold.co/600x400/f87171/4a5568?text=Adobe+Suite+Mastery",
       "https://placehold.co/600x400/ef4444/4a5568?text=Portfolio+Building",
     ],
   },
   {
     id: 3,
-    title: "Graphic Design Services",
+    title: "Diploma in Computer Application",
+    heroImage: "src/assets/hero3.webp",
     shortDescription:
-      "Professional graphic design services to elevate your brand. From logos and branding to social media creatives and print ads, we design visuals that connect and convert.",
+      "A comprehensive 6-month course covering computer fundamentals, MS Office, web design, and the latest AI tools to build a strong foundation in IT.",
     longDescription:
-      "Our Graphic Design service helps your business stand out with visuals that connect and convert. We craft visuals that grab attention, build trust, and grow your brand across all platforms, from branding to brochures, social media posts to product packaging.",
-    tools: [
-      "Branding",
-      "Social Media",
-      "Print Ads",
-      "Packaging",
-      "Marketing Collaterals",
+      "This 6-month diploma program is designed to provide a robust foundation in computer applications. Students will learn everything from the basics of computer hardware and software to mastering the complete Microsoft Office suite. The curriculum also includes web design with HTML & Wordpress, and an introduction to modern Internet & AI tools, preparing students for various entry-level IT roles.",
+    tools: ["MS Office Suite", "Windows OS", "HTML", "Wordpress", "AI Tools"],
+    courseDuration: "6 Months",
+    courseBreakdown: "5 Months Training + 1 Month Project",
+    courseModes: ["At Studio (Hands-on)", "Online (Live Interactive)"],
+    careerOpportunities: [
+      "Office Administrator",
+      "Data Entry Operator",
+      "IT Support Assistant",
+      "Junior Web Designer",
+      "Computer Operator",
+      "Front Office Executive",
+    ],
+    courseHighlights: [
+      "Comprehensive curriculum from basics to web design",
+      "Practical training on Microsoft Office Suite",
+      "Hands-on project work to build a portfolio",
+      "Introduction to modern AI and Internet tools",
+      "Career guidance and placement assistance",
+    ],
+    idealFor: [
+      "10th/12th Pass Students",
+      "College Students from any stream",
+      "Individuals seeking computer literacy for office jobs",
+      "Beginners starting their career in the IT field",
+    ],
+    curriculum: [
+      {
+        month: 1,
+        topic: "Fundamentals & Operating System",
+        details: [
+          "History & Generations of Computers",
+          "Hardware, Software, I/O Devices",
+          "Windows OS Management",
+          "File & Folder organization",
+        ],
+      },
+      {
+        month: 2,
+        topic: "Microsoft Word & PowerPoint",
+        details: [
+          "Document Creation & Formatting",
+          "Using Tables, Images, and Mail Merge",
+          "Creating Professional Presentations",
+          "Animations, Transitions, and Slide Shows",
+        ],
+      },
+      {
+        month: 3,
+        topic: "Microsoft Excel & Access",
+        details: [
+          "Worksheet & Workbook Management",
+          "Formulas, Functions, Charts & Graphs",
+          "Data Sorting, Filtering & Pivot Tables",
+          "Introduction to Database with MS Access",
+        ],
+      },
+      {
+        month: 4,
+        topic: "Internet & AI Tools",
+        details: [
+          "Web Browsing & Search Engines",
+          "Email Management with Gmail",
+          "Introduction to AI Tools like ChatGPT & Google Gemini",
+          "Using AI for Productivity",
+        ],
+      },
+      {
+        month: 5,
+        topic: "HTML & Wordpress",
+        details: [
+          "Basics of HTML for Webpages",
+          "Using Tags for Text, Images, and Links",
+          "Creating Lists, Tables, and Forms",
+          "Introduction to Wordpress CMS for website building",
+        ],
+      },
+      {
+        month: 6,
+        topic: "Final Project Work",
+        details: [
+          "Develop an office report using Word & Excel",
+          "Create a business presentation with PowerPoint",
+          "Build a personal portfolio website using HTML",
+          "Showcase practical skills learned during the course",
+        ],
+      },
     ],
     images: [
-      "https://placehold.co/600x400/93c5fd/4a5568?text=Logo+%26+Branding",
-      "https://placehold.co/600x400/60a5fa/4a5568?text=Social+Media+Posts",
-      "https://placehold.co/600x400/3b82f6/4a5568?text=Print+Designs",
-    ],
-    serviceOptions: [
-      {
-        title: "Option 1 – Professional & Direct",
-        description:
-          "From branding to brochures, social media posts to product packaging – our Graphic Designing service helps your business stand out with visuals that connect and convert.",
-        points: [
-          "Logo & Branding",
-          "Social Media Creatives",
-          "Print & Digital Ads",
-          "Packaging & Marketing Collaterals",
-        ],
-        outro: "Let’s design your success story today!",
-      },
-      {
-        title: "Option 2 – Creative & Engaging",
-        description:
-          "At Greenefx, we craft visuals that grab attention, build trust, and grow your brand.",
-        points: [
-          "Logos that define you",
-          "Posts that trend",
-          "Brochures that impress",
-          "Ads that sell",
-        ],
-        outro: "DM us and let’s create magic together!",
-      },
-      {
-        title: "Option 3 – Short & Catchy",
-        description:
-          "Your idea + Our design = Unstoppable Brand 🚀. Get noticed with stunning graphic designs for your business.",
-        points: ["Branding", "Social Media", "Print Ads", "Packaging"],
-        outro: "Contact us today!",
-      },
-      {
-        title: "Option 4 – Bold & Eye-Catching",
-        description:
-          "From social media creatives to premium print designs – we make sure your visuals stand out in every crowd.",
-        points: ["Creative.", "Professional.", "Impactful."],
-        outro: "Let’s give your brand the design it deserves.",
-      },
-      {
-        title: "Option 5 – Minimal & Classy",
-        description:
-          "We don’t just design, we craft experiences that connect your brand with your audience.",
-        points: [
-          "Branding that builds trust",
-          "Designs that drive sales",
-          "Creatives that trend",
-        ],
-        outro: "Let’s shape your visual identity together.",
-      },
-      {
-        title: "Option 6 – Relatable & Fun",
-        description:
-          "Tired of boring posts and outdated designs? We’ve got the cure – Stunning graphics that make your brand UNMISSABLE! 🚀",
-        points: ["Logos", "Posters", "Social Media", "Ads", "Packaging"],
-        outro:
-          "One team, endless possibilities. Message us today to transform your brand’s look!",
-      },
-      {
-        title: "Option 7 – Focus on Business Growth",
-        description: "Our Graphic Designing service helps you:",
-        list: [
-          "Grab attention instantly",
-          "Communicate your brand story",
-          "Boost your business presence",
-        ],
-        outro:
-          "Let your visuals do the talking. Start designing your success with us today!",
-      },
-      {
-        title: "Option 8 – Short Reel Caption Style",
-        description:
-          "🔥 Designs that Sell. ✨ Graphics that Trend. 🚀 Branding that Lasts. That’s Greenefx. 💡",
-        outro: "#DesignYourBrand #GreenefxGraphics",
-      },
+      "https://placehold.co/1200x400/a7f3d0/4a5568?text=Computer+Applications",
+      "https://placehold.co/600x400/86efac/4a5568?text=MS+Office+Suite",
+      "https://placehold.co/600x400/bef264/4a5568?text=Web+Design+Basics",
     ],
   },
 ];
@@ -402,14 +408,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navClasses = `fixed top-0 left-0 right-0 z-50 duration-300 ${
-    navState.visible ? "translate-y-0" : "-translate-y-full"
-  } ${
-    navState.top ? "bg-transparent text-black" : "bg-white text-black shadow-md"
+  const navClasses = `fixed top-0 left-0 right-0 z-50 duration-300 ${ 
+    navState.visible ? "translate-y-0" : "-translate-y-full" 
+  } ${ 
+    navState.top ? "bg-transparent text-white" : "bg-white text-black shadow-md" 
   }`;
-  const textClasses = navState.top ? "text-black" : "text-black";
+  const textClasses = navState.top ? "text-white" : "text-black";
   const buttonClasses = navState.top
-    ? "border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+    ? "border-white-500 text-white-500 hover:bg-white hover:text-green-500"
     : "border-green-500 text-green-500 hover:bg-green-500 hover:text-white";
   const mobileMenuButtonClasses = navState.top ? "text-white" : "text-black";
 
@@ -419,7 +425,7 @@ const Navbar = () => {
         <div className="flex justify-around items-center ">
           <div className="flex-shrink-0 ">
             <img
-              src="src/assets/Gefx_logo.webp"
+              src="/src/assets/Gefx_logo.webp"
               alt="Greens Logo"
               className="h-[8.19vh] w-7.25vw transition-all duration-300"
               onError={(e) => {
@@ -433,15 +439,14 @@ const Navbar = () => {
             className={`hidden md:flex items-center text-[2.5vh] lg:space-x-10 font-semibold ${textClasses}`}
           >
             <li>
-              <a href="#about" className="hover:opacity-75 transition-opacity">
-                About
-              </a>
-            </li>
-            <li>
-              <Link to="/courses" className="hover:opacity-75 transition-opacity">
-                Training
+              <Link
+                to="/"
+                className="hover:opacity-75 transition-opacity"
+              >
+               About
               </Link>
             </li>
+            
             <li>
               <a
                 href="#services"
@@ -449,6 +454,14 @@ const Navbar = () => {
               >
                 Services
               </a>
+            </li>
+            <li>
+              <Link
+                to="/courses"
+                className="hover:opacity-75 transition-opacity"
+              >
+                Training
+              </Link>
             </li>
             <li>
               <a href="#career" className="hover:opacity-75 transition-opacity">
@@ -539,7 +552,7 @@ const Navbar = () => {
 };
 
 const HeroSection = () => (
-  <section className="bg-[#f0faf5] relative overflow-hidden h-screen flex items-center justify-center text-center">
+  <section className="bg-[#1ab668] relative overflow-hidden h-screen flex items-center justify-center text-center">
     <div className="absolute inset-0 hidden md:block">
       <div className="absolute text-green-300/70 text-3xl top-[15%] left-[20%]">
         <svg
@@ -713,10 +726,10 @@ const HeroSection = () => (
 
     <div className="container mx-auto px-6 relative z-10">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight mb-4">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
           Unlock Your Potential in Tech & Design
         </h1>
-        <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg text-white font-bold mb-8 max-w-2xl mx-auto">
           Join GreenEFX Media for industry-focused, hands-on training in the
           latest software and technologies. Start your career journey with us
           today.
@@ -741,7 +754,7 @@ const CourseCard = ({ course, onCourseSelect }) => (
   <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200/80 transform hover:-translate-y-2 transition-all duration-300 flex flex-col">
     <div className="relative">
       <img
-        src={course.images[0]}
+        src={course.images[1]}
         alt={course.title}
         className="h-48 w-full object-cover"
       />
@@ -749,11 +762,11 @@ const CourseCard = ({ course, onCourseSelect }) => (
         Best Seller
       </div>
     </div>
-    <div className="p-6 flex-grow">
-      <h3 className="text-xl font-bold text-gray-800 mb-2 h-14">
+    <div className="p-6 flex-grow flex flex-col">
+      <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2 flex-grow">
         {course.title}
       </h3>
-      <p className="text-gray-600 text-sm mb-4 h-24 overflow-hidden">
+      <p className="text-gray-600 text-sm mb-4 line-clamp-4">
         {course.shortDescription}
       </p>
     </div>
@@ -771,15 +784,17 @@ const CourseCard = ({ course, onCourseSelect }) => (
 const CourseListPage = ({ onCourseSelect }) => (
   <div>
     <HeroSection />
-    <main className="py-16 sm:py-24 bg-gray-50 min-h-screen">
+    <main className="py-16 sm:py-24 bg-gray-50">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800">Our Courses</h2>
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+            Our Courses
+          </h2>
           <p className="text-gray-500 mt-2">
             Explore our range of expert-led training programs.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {courses.map((course) => (
             <CourseCard
               key={course.id}
@@ -796,7 +811,7 @@ const CourseListPage = ({ onCourseSelect }) => (
 // --- HELPER COMPONENTS FOR DETAIL PAGE ---
 const Section = ({ title, children }) => (
   <div className="mt-12">
-    <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-green-200 pb-2">
+    <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 border-b-2 border-green-200 pb-2">
       {title}
     </h2>
     {children}
@@ -823,6 +838,28 @@ const CheckListItem = ({ children }) => (
   </li>
 );
 
+const CourseBanner = () => (
+  <div className="mt-12 bg-green-600 rounded-lg shadow-xl relative overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+    <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-teal-500 opacity-95"></div>
+    <div className="relative p-8 md:p-12 flex flex-col md:flex-row justify-between items-center text-white">
+      <div className="text-center md:text-left mb-6 md:mb-0">
+        <h3 className="text-2xl md:text-3xl font-extrabold">
+          Ready to Start Your Career?
+        </h3>
+        <p className="mt-2 text-green-100 max-w-lg">
+          Enroll today and gain the skills you need to turn your passion into a
+          profession.
+        </p>
+      </div>
+      <div className="flex-shrink-0">
+        <button className="bg-white text-green-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-lg text-lg">
+          Enroll Now
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 const CourseDetailPage = ({ courseId, onBack }) => {
   const course = courses.find((c) => c.id === courseId);
 
@@ -841,8 +878,17 @@ const CourseDetailPage = ({ courseId, onBack }) => {
   }
 
   return (
-    <div className="bg-white pt-[5%]">
-      <div className="container mx-auto px-6 py-12 md:py-20">
+    <div className="bg-white">
+      <div
+        className="relative h-90 md:h-120 bg-cover bg-center"
+        style={{ backgroundImage: `url(${course.heroImage})` }}
+      >
+        <div className="absolute inset-0  flex items-center justify-center">
+          
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 py-12 md:py-16">
         <button
           onClick={onBack}
           className="mb-8 inline-flex items-center text-green-600 hover:text-green-800 font-medium transition"
@@ -865,9 +911,9 @@ const CourseDetailPage = ({ courseId, onBack }) => {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Left Column */}
           <div className="lg:col-span-2">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
-              {course.id === 3 ? "🎨" : "🎓"} {course.title}
-            </h1>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              About The Course
+            </h2>
             <p className="text-gray-600 leading-relaxed mb-6">
               {course.longDescription}
             </p>
@@ -885,103 +931,38 @@ const CourseDetailPage = ({ courseId, onBack }) => {
               </div>
             )}
 
-            {course.serviceOptions && (
-              <Section title="✨ Creative Campaign Styles">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {course.serviceOptions.map((option) => (
-                    <div
-                      key={option.title}
-                      className="bg-gray-50 p-5 rounded-lg border-l-4 border-purple-400 flex flex-col justify-between"
-                    >
-                      <div>
-                        <h4 className="font-semibold text-gray-800 text-lg mb-2">
-                          {option.title}
-                        </h4>
-                        <p className="text-gray-600 mb-3 text-sm">
-                          {option.description}
-                        </p>
-                        {option.points && (
-                          <ul className="list-disc list-inside text-gray-600 space-y-1 text-sm mb-3">
-                            {option.points.map((point) => (
-                              <li key={point}>{point}</li>
-                            ))}
-                          </ul>
-                        )}
-                        {option.list && (
-                          <ul className="space-y-1 text-sm mb-3">
-                            {option.list.map((item) => (
-                              <CheckListItem key={item}>{item}</CheckListItem>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                      <p className="font-semibold text-gray-700 text-sm mt-2">
-                        {option.outro}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </Section>
-            )}
-
             {course.whyChoose && (
-              <Section title="🌟 Why Choose This Course?">
-                <div className="space-y-4">
-                  {course.whyChoose.map((item) => (
-                    <div
-                      key={item.title}
-                      className="bg-gray-50 p-4 rounded-lg border-l-4 border-green-400"
-                    >
-                      <h4 className="font-semibold text-gray-800">
-                        {item.title}
-                      </h4>
-                      <p className="text-gray-600 mt-1">{item.details}</p>
-                    </div>
-                  ))}
-                </div>
-              </Section>
+              <>
+                <Section title="🌟 Why Choose This Course?">
+                  <div className="space-y-4">
+                    {course.whyChoose.map((item) => (
+                      <div
+                        key={item.title}
+                        className="bg-gray-50 p-4 rounded-lg border-l-4 border-green-400"
+                      >
+                        <h4 className="font-semibold text-gray-800">
+                          {item.title}
+                        </h4>
+                        <p className="text-gray-600 mt-1">{item.details}</p>
+                      </div>
+                    ))}
+                  </div>
+                </Section>
+                <CourseBanner />
+              </>
             )}
 
             {course.coreModules && (
-              <Section title="🌟 Core Training Modules">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {course.coreModules.map((item) => (
-                    <div
-                      key={item.title}
-                      className="bg-gray-50 p-5 rounded-lg border-l-4 border-cyan-400"
-                    >
-                      <h4 className="font-semibold text-gray-800 text-lg mb-2">
-                        {item.title}
-                      </h4>
-                      <ul className="list-disc list-inside text-gray-600 space-y-1 text-sm">
-                        {item.details.map((detail) => (
-                          <li key={detail}>{detail}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </Section>
-            )}
-
-            {course.curriculum && course.curriculum[0].month && (
-              <Section title={`📅 Course Roadmap – ${course.courseDuration}`}>
-                <div className="relative border-l-2 border-green-200 pl-6">
-                  {course.curriculum.map((item, index) => (
-                    <div
-                      key={item.month}
-                      className={`relative mb-10 ml-6 ${
-                        index === course.curriculum.length - 1 ? "mb-0" : ""
-                      }`}
-                    >
-                      <span className="absolute -left-[3.2rem] flex items-center justify-center w-12 h-12 bg-green-100 rounded-full ring-8 ring-white">
-                        <span className="font-bold text-green-700">
-                          M{item.month}
-                        </span>
-                      </span>
-                      <div className="p-5 bg-white border border-gray-200/80 rounded-lg shadow-sm ml-4 transform hover:scale-[1.02] transition-transform duration-300">
-                        <h4 className="font-semibold text-lg text-gray-800 mb-2">
-                          {item.topic}
+              <>
+                <Section title="🌟 Core Training Modules">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {course.coreModules.map((item) => (
+                      <div
+                        key={item.title}
+                        className="bg-gray-50 p-5 rounded-lg border-l-4 border-cyan-400"
+                      >
+                        <h4 className="font-semibold text-gray-800 text-lg mb-2">
+                          {item.title}
                         </h4>
                         <ul className="list-disc list-inside text-gray-600 space-y-1 text-sm">
                           {item.details.map((detail) => (
@@ -989,10 +970,45 @@ const CourseDetailPage = ({ courseId, onBack }) => {
                           ))}
                         </ul>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </Section>
+                    ))}
+                  </div>
+                </Section>
+                <CourseBanner />
+              </>
+            )}
+
+            {course.curriculum && course.curriculum[0].month && (
+              <>
+                <Section title={`📅 Course Roadmap – ${course.courseDuration}`}>
+                  <div className="relative border-l-2 border-green-200 pl-4">
+                    {course.curriculum.map((item, index) => (
+                      <div
+                        key={item.month}
+                        className={`relative mb-10 ml-4 sm:ml-6 ${ 
+                          index === course.curriculum.length - 1 ? "mb-0" : "" 
+                        }`}
+                      >
+                        <span className="absolute -left-[2.7rem] sm:-left-[3.2rem] flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full ring-4 sm:ring-8 ring-white">
+                          <span className="font-bold text-green-700 text-sm sm:text-base">
+                            M{item.month}
+                          </span>
+                        </span>
+                        <div className="p-4 sm:p-5 bg-white border border-gray-200/80 rounded-lg shadow-sm ml-4 sm:ml-4 transform hover:scale-[1.02] transition-transform duration-300">
+                          <h4 className="font-semibold text-md sm:text-lg text-gray-800 mb-2">
+                            {item.topic}
+                          </h4>
+                          <ul className="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                            {item.details.map((detail) => (
+                              <li key={detail}>{detail}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Section>
+                {course.id === 3 && <CourseBanner />}
+              </>
             )}
 
             {course.careerOpportunities && (
@@ -1030,21 +1046,26 @@ const CourseDetailPage = ({ courseId, onBack }) => {
             <div className="sticky top-28">
               <div className="bg-gray-50 border border-gray-200 rounded-lg shadow-sm">
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
                     {course.courseDuration
                       ? "Course Overview"
                       : "Service Overview"}
                   </h3>
                   <div className="grid grid-cols-2 gap-2 mb-4">
-                    {course.images.map((img, index) => (
+                    {course.images.slice(1).map((img, index) => (
                       <img
                         key={index}
                         src={img}
-                        alt={`${course.title} preview ${index + 1}`}
+                        alt={`${course.title} preview ${index + 2}`}
                         className="rounded-md object-cover w-full h-24"
                       />
                     ))}
                     {course.images.length === 3 && (
+                      <div className="rounded-md object-cover w-full h-24 bg-gray-200 flex items-center justify-center text-gray-500 text-sm col-span-2">
+                        More+
+                      </div>
+                    )}
+                    {course.images.length > 3 && (
                       <div className="rounded-md object-cover w-full h-24 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
                         More+
                       </div>
@@ -1097,6 +1118,8 @@ const CourseDetailPage = ({ courseId, onBack }) => {
     </div>
   );
 };
+
+
 
 const Footer = () => (
   <footer className="bg-[#4CAF4F] text-white pt-16 pb-8">
