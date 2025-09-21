@@ -135,3 +135,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your_email@example.com' # Replace with your email
 EMAIL_HOST_PASSWORD = 'your_email_password' # Replace with your email password
 DEFAULT_FROM_EMAIL = 'your_email@example.com' # Replace with your email
+CONTACT_RECIPIENT_EMAIL = 'recipient@example.com' # Replace with the actual recipient email
