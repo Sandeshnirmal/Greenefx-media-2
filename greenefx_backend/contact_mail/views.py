@@ -28,4 +28,6 @@ class ContactMailView(APIView):
                 return Response({"message": "Email sent successfully!"}, status=status.HTTP_200_OK)
             except Exception as e:
                 return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else: # This else block should only handle validation errors
+            print("Serializer Errors:", serializer.errors) # Correct placement
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

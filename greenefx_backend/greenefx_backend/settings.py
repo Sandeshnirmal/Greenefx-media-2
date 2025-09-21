@@ -129,10 +129,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # Email settings (placeholders)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com' # Replace with your SMTP server
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@example.com' # Replace with your email
-EMAIL_HOST_PASSWORD = 'your_email_password' # Replace with your email password
-DEFAULT_FROM_EMAIL = 'your_email@example.com' # Replace with your email
-CONTACT_RECIPIENT_EMAIL = 'recipient@example.com' # Replace with the actual recipient email
+EMAIL_HOST_USER = 'your_email@example.com'
+EMAIL_HOST_PASSWORD = 'your_email_password' 
+DEFAULT_FROM_EMAIL = 'your_email@example.com' 
+CONTACT_RECIPIENT_EMAIL = 'recipient@example.com'
